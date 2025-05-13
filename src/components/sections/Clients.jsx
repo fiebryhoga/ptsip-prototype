@@ -33,8 +33,8 @@ const Clients = () => {
 
   return (
     <div className="flex flex-col items-center px-40 py-12 w-full gap-12 mb-20">
-      <div className="flex flex-col justify-center items-center gap-4">
-        <h2 className="text-6xl text-center font-bold text-[#4F7303]">
+      {/* <div className="flex flex-col justify-center items-center gap-4">
+        <h2 className="text-6xl text-center font-bold text-[#00662C]">
           Trusted by Companies
         </h2>
         <p className="text-center text-sm px-52  text-gray-500">
@@ -43,23 +43,23 @@ const Clients = () => {
           sectors including technology, education, finance, healthcare, and
           manufacturing.
         </p>
-      </div>
+      </div> */}
 
       {/* Statistik Branding */}
-      <div className="flex flex-row justify-center gap-24 w-full mb-12">
+      {/* <div className="flex flex-row justify-center gap-24 w-full mb-12">
         <div className="text-center">
-          <h3 className="text-5xl mb-2 font-extrabold text-[#4F7303]">Since 2007</h3>
+          <h3 className="text-5xl mb-2 font-extrabold text-[#00662C]">Since 2007</h3>
           <p className="text-sm text-gray-500">Years of Experience</p>
         </div>
         <div className="text-center">
-          <h3 className="text-5xl mb-2 font-extrabold text-[#4F7303]">20+</h3>
+          <h3 className="text-5xl mb-2 font-extrabold text-[#00662C]">20+</h3>
           <p className="text-sm text-gray-500">Major Projects</p>
         </div>
         <div className="text-center">
-          <h3 className="text-5xl mb-2 font-extrabold text-[#4F7303]">50+</h3>
+          <h3 className="text-5xl mb-2 font-extrabold text-[#00662C]">50+</h3>
           <p className="text-sm text-gray-500">Corporate Clients</p>
         </div>
-      </div>
+      </div> */}
 
       {/* Carousel */}
       <div

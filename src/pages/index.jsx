@@ -19,15 +19,14 @@ const geistMono = Geist_Mono({
 
 export default function Home() {
   return (
-    <div
-      className={` flex flex-col justify-start items-start bg-white gap-12`} >
+    <div className={` flex flex-col justify-start items-start bg-white gap-12`}>
       <Navbar />
-      <Hero/>
-      <Clients/>
-      <CoreValue/>
-      <Testimonials/>
-      <Service/>
-      <Footer/>
+      <Hero />
+      <Clients />
+      <CoreValue />
+      <Service />
+      <Testimonials />
+      <Footer />
     </div>
   );
 }

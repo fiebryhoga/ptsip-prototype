@@ -13,9 +13,9 @@ import { BsFillPatchQuestionFill } from "react-icons/bs";
 
 const CoreValue = () => {
   return (
-    <div className="w-full px-40 bg-[#4F7303] flex flex-col justify-center items-center h-[100vh] gap-16">
+    <div className="w-full px-40 bg-[#00662C] flex flex-col justify-center items-center h-[100vh] gap-16">
       <div className="flex flex-col justify-center items-center gap-2 px-20">
-        <div className="flex flex-row gap-2 bg-white rounded-4xl py-2 px-6 mb-12 text-sm font-semibold text-[#4F7303]">
+        <div className="flex flex-row gap-2 bg-white rounded-4xl py-2 px-6 mb-12 text-sm font-semibold text-[#00662C]">
           <BsFillPatchQuestionFill size={22}/><p>Why us?</p>
         </div>
 
@@ -28,13 +28,13 @@ const CoreValue = () => {
       </div>
       <div className="flex flex-col gap-10">
         <div className="flex flex-row justify-between items-start gap-20">
-          <div className="w-80 flex flex-col justify-start items-center gap-4">
-            <div className=" flex flex-row gap-2 justify-center items-center">
+          <div className="w-80 flex flex-col justify-start items-start gap-4">
+            <div className=" flex flex-row gap-2 justify-start items-center">
               <div className="rounded-full h-16 w-16 flex flex-row justify-center items-center px-1 py-1 bg-black/20">
                 <FaHandshake size={30} color="white" />
               </div>
               <h2 className=" text-white text-xl pb-1 font-semibold text-center">
-                Kolaboratif (collaborative)
+                Kolaboratif (Collaborative)
               </h2>
             </div>
 
@@ -45,13 +45,13 @@ const CoreValue = () => {
               long-term value.
             </p>
           </div>
-          <div className="w-80 flex flex-col justify-start items-center gap-4">
-            <div className=" flex flex-row gap-2 justify-center items-center">
+          <div className="w-80 flex flex-col justify-start items-start gap-4">
+            <div className=" flex flex-row gap-2 justify-start items-center">
               <div className="rounded-full h-16 w-16 flex flex-row justify-center items-center px-1 py-1 bg-black/20">
                 <FaUserGraduate size={30} color="white" />
               </div>
               <h2 className=" text-white text-xl pb-1 font-semibold text-center">
-                Kompeten (competent)
+                Kompeten (Competent)
               </h2>
             </div>
 
@@ -62,13 +62,13 @@ const CoreValue = () => {
               in every opportunity.
             </p>
           </div>
-          <div className="w-80 flex flex-col justify-start items-center gap-4">
-            <div className=" flex flex-row gap-2 justify-center items-center">
+          <div className="w-80 flex flex-col justify-start items-start gap-4">
+            <div className=" flex flex-row gap-2 justify-start items-center">
               <div className="rounded-full h-16 w-16 flex flex-row justify-center items-center px-1 py-1 bg-black/20">
                 <FaHeartCircleCheck size={30} color="white" />
               </div>
               <h2 className=" text-white text-xl pb-1 font-semibold text-center">
-                Harmonis (harmonius)
+                Harmonis (Harmonius)
               </h2>
             </div>
 
@@ -80,8 +80,8 @@ const CoreValue = () => {
           </div>
         </div>
         <div className="flex flex-row justify-center items-start gap-20">
-          <div className="w-80 flex flex-col justify-start items-center gap-4">
-            <div className=" flex flex-row gap-2 justify-center items-center">
+          <div className="w-80 flex flex-col justify-start items-start gap-4">
+            <div className=" flex flex-row gap-2 justify-start items-center">
               <div className="rounded-full h-16 w-16 flex flex-row justify-center items-center px-1 py-1 bg-black/20">
                 <FaAward size={30} color="white" />
               </div>
@@ -96,8 +96,8 @@ const CoreValue = () => {
               excellence, reliability, and continuous improvement.
             </p>
           </div>
-          <div className="w-80 flex flex-col justify-start items-center gap-4">
-            <div className=" flex flex-row gap-2 justify-center items-center">
+          <div className="w-80 flex flex-col justify-start items-start gap-4">
+            <div className=" flex flex-row gap-2 justify-start items-center">
               <div className="rounded-full h-16 w-16 flex flex-row justify-center items-center px-1 py-1 bg-black/20">
                 <FaShieldAlt size={30} color="white" />
               </div>
@@ -108,7 +108,7 @@ const CoreValue = () => {
 
             <p className="text-white text-sm text-justify">
               We honor the trust entrusted to us by being consistently honest,
-              transparent, and responsible—delivering our best efforts in every
+              transparent, and responsible delivering our best efforts in every
               task to maintain credibility and long-term confidence.
             </p>
           </div>

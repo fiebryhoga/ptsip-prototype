@@ -4,9 +4,9 @@ import { BiSolidQuoteAltLeft } from "react-icons/bi";
 
 const CardTestimonials = ({ name, date, message, initial, stars, link }) => {
   return (
-    <div className="max-w-64 border border-gray-300 rounded-lg shadow-lg bg-white p-6 space-y-4 h-64">
+    <div className="max-w-64 border border-gray-300 rounded-lg hover:scale-105 my-2 transition-all hover:transition-all duration-300 hover:duration-300 ease-in-out hover:ease-in-out bg-white p-6 space-y-4 h-64 mb-2">
       <div className="flex items-center space-x-4">
-        <div className="h-12 w-12 flex items-center justify-center bg-[#4F7303] text-white text-lg font-semibold rounded-full">
+        <div className="h-12 w-12 flex items-center justify-center bg-[#00662C]/80 text-white text-lg font-semibold rounded-full">
           {initial}
         </div>
         <div>
@@ -30,7 +30,7 @@ const CardTestimonials = ({ name, date, message, initial, stars, link }) => {
           overflow: "hidden",
         }}
       >
-        <BiSolidQuoteAltLeft className="absolute left-0 top-1 text-[#4F7303] text-xl" />
+        <BiSolidQuoteAltLeft className="absolute left-0 top-1 text-[#00662C] text-xl" />
         {message}
       </p>
 
@@ -38,7 +38,7 @@ const CardTestimonials = ({ name, date, message, initial, stars, link }) => {
         href={link}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-sm font-medium cursor-pointer hover:text-[#4F7303] text-gray-400"
+        className="text-sm font-medium cursor-pointer hover:text-[#00662C] text-gray-400"
       >
         Read more
       </a>

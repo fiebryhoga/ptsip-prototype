@@ -93,11 +93,11 @@ const Testimonials = () => {
   return (
     <div className="flex flex-col w-full py-20 items-center px-36 gap-20">
       <div className="flex flex-col gap-10 justify-center items-center">
-        <div className="flex flex-row gap-4 rounded-full px-10 py-2 bg-[#4F7303]/10">
-          <GoReport size={22} color="#4F7303" />
-          <p className="text-sm font-semibold text-[#4F7303]">Testimonials</p>
+        <div className="flex flex-row gap-4 rounded-full px-10 py-2 bg-[#00662C]/10">
+          <GoReport size={22} color="#00662C" />
+          <p className="text-sm font-semibold text-[#00662C]">Testimonials</p>
         </div>
-        <h2 className="text-4xl font-bold text-[#4F7303]">
+        <h2 className="text-4xl font-bold text-[#00662C]">
           What Do They Say About Us?
         </h2>
       </div>

@@ -2,7 +2,7 @@ import React from "react";
 
 const CardService = () => {
   return (
-    <div className="w-xl flex flex-row rounded-xl h-52 hover:transform hover:scale-105 hover:duartion-300 duration-300 ease-in-out hover:ease-in-out hover:transition-all  transition-all shadow shadow-[#4F7303]/10">
+    <div className="w-xl flex flex-row rounded-xl h-52 hover:transform hover:scale-105 hover:duartion-300 duration-300 ease-in-out hover:ease-in-out hover:transition-all  transition-all shadow shadow-[##00662C]/10">
       <div className="bg-gray-100 w-2/5 rounded-l-xl">
         <img
           className="w-ful h-full object-cover rounded-l-xl "
@@ -10,9 +10,9 @@ const CardService = () => {
           alt=""
         />
       </div>
-      <div className=" w-3/5 flex flex-col border border-[#4F7303]/20 rounded-r-xl px-6 py-4 gap-4 justify-center">
+      <div className=" w-3/5 flex flex-col border border-[#00662C]/10 rounded-r-xl px-6 py-4 gap-4 justify-center">
         <div className="flex flex-col jutsify-center items-start gap-6">
-          <h3 className="text-[#4F7303] text-lg font-semibold  ">
+          <h3 className="text-[#00662C] text-lg font-semibold  ">
             Power Plant
           </h3>
           <p className="text-sm font-normal text-[#403601] text-justify">
