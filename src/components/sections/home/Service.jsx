@@ -1,7 +1,6 @@
-import React from 'react';
+import React from "react";
 import { MdMiscellaneousServices } from "react-icons/md";
-import CardService from '../common/CardService';
-
+import CardService from "../../common/CardService";
 
 const Service = () => {
   return (
@@ -29,13 +28,14 @@ const Service = () => {
       </div>
       <div className="flex flex-row justify-center items-center">
         <a
-          className="px-8 py-3 text-base font-medium text-white bg-[#00662C] rounded-full hover:text-[#00662C] hover:bg-transparent border border-[#00662C] hover:transition-all hover:duration-300 duration-300 transition-all hover:ease-in-out ease-in-out" href=""
+          className="px-8 py-3 text-base font-medium text-white bg-[#00662C] rounded-full hover:text-[#00662C] hover:bg-transparent border border-[#00662C] hover:transition-all hover:duration-300 duration-300 transition-all hover:ease-in-out ease-in-out"
+          href=""
         >
           See More
         </a>
       </div>
     </div>
   );
-}
+};
 
-export default Service
+export default Service;

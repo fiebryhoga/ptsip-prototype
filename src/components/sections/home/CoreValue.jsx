@@ -13,20 +13,25 @@ import { BsFillPatchQuestionFill } from "react-icons/bs";
 
 const CoreValue = () => {
   return (
-    <div className="w-full px-40 bg-[#00662C] flex flex-col justify-center items-center h-[100vh] gap-16">
-      <div className="flex flex-col justify-center items-center gap-2 px-20">
-        <div className="flex flex-row gap-2 bg-white rounded-4xl py-2 px-6 mb-12 text-sm font-semibold text-[#00662C]">
-          <BsFillPatchQuestionFill size={22}/><p>Why us?</p>
+    <div className="w-full flex flex-col justify-start items-end gap-24 relative">
+      <img
+        className="w-full h-full object-cover absolute"
+        src="/assets/image/bg-core3.png"
+        alt=""
+      />
+      <div className="flex flex-col justify-center items-center gap-2 px-60 z-10 mt-20">
+        <div className="flex flex-row gap-2 bg-[#00662C] rounded-4xl py-2 px-6 mb-6 text-sm font-semibold text-[#ffffff]">
+          <BsFillPatchQuestionFill size={22} />
+          <p>Why us?</p>
         </div>
 
-        <h1 className="text-4xl text-center font-bold text-white">KKHARISMA</h1>
-        <p className="text-sm text-white text-center px-64">
+        <p className="text-sm text-[#00662C] text-center px-64">
           We uphold values that define us, shape our culture, guide our actions,
           and reinforce our commitment to trusted, high-quality, and impactful
           solutions.
         </p>
       </div>
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-10 px-40 z-10 pb-20">
         <div className="flex flex-row justify-between items-start gap-20">
           <div className="w-80 flex flex-col justify-start items-start gap-4">
             <div className=" flex flex-row gap-2 justify-start items-center">

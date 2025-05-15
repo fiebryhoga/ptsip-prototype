@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { GoReport } from "react-icons/go";
-import CardTestimonials from "../common/CardTestimonials";
+import CardTestimonials from "../../common/CardTestimonials";
 
 const testimonialData = [
   {

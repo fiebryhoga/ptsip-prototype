@@ -12,7 +12,7 @@ import { FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className=" flex flex-col gap-10 justify items-center h-[90vh] bg-white w-full relative">
+    <div className=" flex flex-col gap-10 justify items-center h-[90vh] bg-white w-full relative bottom-0">
       <img
         className="w-full h-full object-cover absolute"
         src="/assets/image/bg-footer2.png"
