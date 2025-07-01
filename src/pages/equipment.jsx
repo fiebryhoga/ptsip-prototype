@@ -10,8 +10,27 @@ const Equipment = () => {
       className={` flex flex-col justify-start items-start bg-white min-h-[100vh]`}
     >
       <Navbar />
-      <HeroEquipment/>
-      <ListEquipment/>
+      <div className="flex flex-row w-full justify-center items-center h-72 relative mt-20 mb-20">
+        <div className="w-full h-full absolute mt-1 bg-black">
+          <img
+            className="w-full h-full object-cover opacity-90"
+            src="/assets/image/bg-faq2.png"
+            alt=""
+          />
+        </div>
+        <div className="z-10 flex flex-col justify-center items-center w-full h-full gap-4 text-white">
+          <h1 className="text-4xl font-semibold">Our Equipment Capabilities</h1>
+          <p className="text-center text-sm font-medium px-96">
+            At Sarana Inti Perwira, we are committed to operational excellence.
+            Our equipment lineup is selected to meet the highest standards in
+            heavy lifting, erection, construction, and installation works. Below
+            is an overview of the tools and machinery that empower our field
+            operations.
+          </p>
+        </div>
+      </div>
+      {/* <HeroEquipment /> */}
+      <ListEquipment />
       <Footer />
     </div>
   );

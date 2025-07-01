@@ -16,10 +16,10 @@ const CoreValue = () => {
     <div className="w-full flex flex-col justify-start items-end gap-24 relative">
       <img
         className="w-full h-full object-cover absolute"
-        src="/assets/image/bg-core3.png"
+        src="/assets/image/bg-core4.png"
         alt=""
       />
-      <div className="flex flex-col justify-center items-center gap-2 px-60 z-10 mt-20">
+      <div className="flex flex-col justify-center items-center gap-2 px-60 z-10 mt-0">
         <div className="flex flex-row gap-2 bg-[#00662C] rounded-4xl py-2 px-6 mb-6 text-sm font-semibold text-[#ffffff]">
           <BsFillPatchQuestionFill size={22} />
           <p>Why us?</p>

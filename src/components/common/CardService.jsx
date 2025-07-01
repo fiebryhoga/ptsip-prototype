@@ -1,27 +1,29 @@
 import React from "react";
 
-const CardService = () => {
+// Menerima props untuk gambar, judul, dan deskripsi
+const CardService = ({ imageUrl, title, description }) => {
   return (
-    <div className="w-xl flex flex-row rounded-xl h-52 hover:transform hover:scale-105 hover:duartion-300 duration-300 ease-in-out hover:ease-in-out hover:transition-all  transition-all shadow shadow-[##00662C]/10">
-      <div className="bg-gray-100 w-2/5 rounded-l-xl">
+    <div
+      className="w-full flex flex-row rounded-xl h-52 shadow-md
+                    hover:transform hover:scale-105 hover:duration-300 duration-300 ease-in-out hover:ease-in-out hover:transition-all 
+                    transition-all shadow-black/20"
+    >
+      <div className="bg-gray-100 w-2/5 rounded-l-xl overflow-hidden">
         <img
-          className="w-ful h-full object-cover rounded-l-xl "
-          src="/assets/image/service/img1.jpg"
-          alt=""
+          className="w-full h-full object-cover rounded-l-xl"
+          src={imageUrl}
+          alt={title}
         />
       </div>
-      <div className=" w-3/5 flex flex-col border border-[#00662C]/10 rounded-r-xl px-6 py-4 gap-4 justify-center">
-        <div className="flex flex-col jutsify-center items-start gap-6">
-          <h3 className="text-[#00662C] text-lg font-semibold  ">
-            Power Plant
+      <div className="w-3/5 flex flex-col border border-[#00662C]/10 rounded-r-xl px-6 py-6 gap-4 justify-start">
+        <div className="flex flex-col justify-start items-start gap-6">
+          <h3 className="text-[#00662C] text-lg font-semibold">
+            {title}
           </h3>
-          <p className="text-sm font-normal text-[#403601] text-justify">
-            We offer dependable and cost effective power generation services
-            designed to support the operational needs of businesses and
-            industries, ensuring a stable and continuous energy supply.
+          <p className="text-sm font-normal text-[#403601] text-justify line-clamp-4">
+            {description}
           </p>
         </div>
-        <div></div>
       </div>
     </div>
   );
