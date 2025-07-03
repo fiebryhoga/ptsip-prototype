@@ -9,7 +9,7 @@ const Hero = () => {
   const whatsAppNumber = contactInfo?.nomor_wa;
 
   return (
-    <div className="flex flex-col-reverse lg:flex-row justify-center items-center w-full min-h-screen md:min-h-[80vh] lg:h-[90vh] md:mt-20 px-4 sm:px-8 md:px-24 xl:px-36 gap-10 text-center lg:text-left">
+    <div className="flex flex-col-reverse lg:flex-row justify-center items-center w-full min-h-screen not-[]:md:min-h-[80vh] lg:h-[90vh] mt-10 md:mt-20 px-4 sm:px-8 md:px-24 xl:px-36 gap-10 text-center lg:text-left">
       {/* Kolom Teks */}
       <div className="w-full lg:w-1/2 flex flex-col justify-center items-center lg:items-start gap-8">
         <h1 className="text-3xl sm:text-4xl lg:text-[40px] font-extrabold leading-tight">
