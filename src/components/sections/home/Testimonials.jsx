@@ -1,105 +1,67 @@
-import React, { useRef, useEffect } from "react";
+// src/components/sections/home/Testimonials.jsx
+
+import React, { useRef, useEffect, useContext } from "react"; // Impor useContext
 import { GoReport } from "react-icons/go";
 import CardTestimonials from "../../common/CardTestimonials";
-
-const testimonialData = [
-  {
-    name: "Zahra Fitriani",
-    date: "12/24/2022",
-    message:
-      "Perusahaan ini adalah pilihan terbaik untuk setiap proyek konstruksi. Mereka memiliki pengalaman dan keahlian yang dibutuhkan untuk menyelesaikan setiap proyek dengan sukses. Sangat direkomendasikan!",
-    initial: "ZF",
-    stars: 5,
-    link: "https://indokontraktor.com/business/pt-sarana-inti-perwira-kota-bekasi",
-  },
-  {
-    name: "Zainal Arifin",
-    date: "04/27/2021",
-    message:
-      "Perusahaan ini adalah pilihan terbaik untuk setiap proyek konstruksi. Mereka memiliki tim yang handal dan mampu memberikan solusi terbaik untuk setiap masalah yang muncul. Sangat direkomendasikan!",
-    initial: "ZA",
-    stars: 5,
-    link: "https://indokontraktor.com/business/pt-sarana-inti-perwira-kota-bekasi",
-  },
-  {
-    name: "Lia Sutanto",
-    date: "04/21/2023",
-    message:
-      "Bangunan yang dibangun oleh perusahaan ini memiliki kualitas yang sangat tinggi. Mereka menggunakan bahan-bahan terbaik dan pekerja yang terampil. Sangat direkomendasikan!",
-    initial: "LS",
-    stars: 5,
-    link: "https://indokontraktor.com/business/pt-sarana-inti-perwira-kota-bekasi",
-  },
-  {
-    name: "Indra Saputra",
-    date: "10/18/2021",
-    message:
-      "Sangat senang dengan kerja sama yang baik dari perusahaan ini. Mereka sangat mendengarkan kebutuhan klien dan memberikan solusi terbaik. Saya sangat merekomendasikan mereka.",
-    initial: "IS",
-    stars: 5,
-    link: "https://indokontraktor.com/business/pt-sarana-inti-perwira-kota-bekasi",
-  },
-  {
-    name: "Budi Santoso",
-    date: "03/08/2021",
-    message:
-      "Pelayanan dari perusahaan ini sangat ramah dan membantu. Staffnya sangat responsif terhadap kebutuhan klien. Saya sangat puas dengan kerja mereka.",
-    initial: "BS",
-    stars: 5,
-    link: "https://indokontraktor.com/business/pt-sarana-inti-perwira-kota-bekasi",
-  },
-  {
-    name: "Ani Widarti",
-    date: "06/03/2024",
-    message:
-      "Saya sangat terkesan dengan kualitas bangunan yang diberikan oleh perusahaan ini. Semua pekerjaan dilakukan dengan teliti dan berkualitas tinggi. Sangat direkomendasikan!",
-    initial: "AW",
-    stars: 5,
-    link: "https://indokontraktor.com/business/pt-sarana-inti-perwira-kota-bekasi",
-  },
-  {
-    name: "Budi",
-    date: "02/10/2023",
-    message:
-      "Perusahaan ini sungguh luar biasa dalam pekerjaan mereka. Kualitasnya tidak diragukan lagi!",
-    initial: "B",
-    stars: 5,
-    link: "https://indokontraktor.com/business/pt-sarana-inti-perwira-kota-bekasi",
-  },
-];
+import { DataContext } from "@/context/DataContext"; // Impor DataContext
 
 const Testimonials = () => {
   const trackRef = useRef(null);
   const isHovered = useRef(false);
   const position = useRef(0);
 
-  useEffect(() => {
-    const track = trackRef.current;
+  // 1. Ambil data testimoni dari context, bukan dari data dummy
+  const { testimonials, loading, error } = useContext(DataContext);
 
+  // 2. Hapus array `testimonialData` yang dummy
+  // const testimonialData = [ ... ]; // <-- HAPUS INI
+
+  useEffect(() => {
+    // Jalankan animasi hanya jika data sudah ada
+    if (!trackRef.current || loading || testimonials.length === 0) return;
+
+    let animationFrameId;
     const animate = () => {
-      if (!isHovered.current && track) {
+      if (!isHovered.current && trackRef.current) {
         position.current -= 0.4;
-        if (Math.abs(position.current) >= track.scrollWidth / 2) {
+        if (Math.abs(position.current) >= trackRef.current.scrollWidth / 2) {
           position.current = 0;
         }
-        track.style.transform = `translateX(${position.current}px)`;
+        trackRef.current.style.transform = `translateX(${position.current}px)`;
       }
-      requestAnimationFrame(animate);
+      animationFrameId = requestAnimationFrame(animate);
     };
 
-    requestAnimationFrame(animate);
-  }, []);
+    animationFrameId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [testimonials, loading]); // Tambahkan dependensi
+
+  // Helper function untuk mendapatkan inisial dari nama
+  const getInitials = (name) => {
+    if (!name) return "";
+    const names = name.split(" ");
+    if (names.length > 1) {
+      return names[0].charAt(0) + names[names.length - 1].charAt(0);
+    }
+    return name.charAt(0);
+  };
+
+  // Helper function untuk format tanggal
+  const formatDate = (dateString) => {
+    if (!dateString) return "";
+    const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+    return new Date(dateString).toLocaleDateString("en-US", options);
+  };
 
   return (
-    <div className="flex flex-col w-full py-20 items-center px-36 gap-20">
-      <div className="flex flex-col gap-10 justify-center items-center">
+    <div className="flex flex-col w-full py-20 items-center px-4 sm:px-8 md:px-20 lg:px-36 gap-16 md:gap-20">
+      <div className="flex flex-col gap-10 justify-center items-center text-center">
         <div className="flex flex-row gap-4 rounded-full px-10 py-2 bg-[#00662C]/10">
           <GoReport size={22} color="#00662C" />
-          <p className="text-sm font-semibold text-[#00662C]">Testimonials</p>
+          <p className="text-sm font-semibold text-[#00662C]">
+            What Do They Say About Us?
+          </p>
         </div>
-        <h2 className="text-4xl font-bold text-[#00662C]">
-          What Do They Say About Us?
-        </h2>
       </div>
 
       <div
@@ -107,17 +69,40 @@ const Testimonials = () => {
         onMouseEnter={() => (isHovered.current = true)}
         onMouseLeave={() => (isHovered.current = false)}
       >
-        <div
-          ref={trackRef}
-          className="flex gap-0 w-max h-max transition-transform duration-300 ease-linear"
-          style={{ willChange: "transform" }}
-        >
-          {[...testimonialData, ...testimonialData].map((item, index) => (
-            <div key={index} className="inline-block min-w-[300px]">
-              <CardTestimonials {...item} />
-            </div>
-          ))}
-        </div>
+        {loading ? (
+          <p className="text-center text-gray-500">Loading testimonials...</p>
+        ) : error ? (
+          <p className="text-center text-red-500">
+            Error loading testimonials.
+          </p>
+        ) : testimonials.length === 0 ? (
+          <p className="text-center text-gray-500">
+            No testimonials available.
+          </p>
+        ) : (
+          <div
+            ref={trackRef}
+            className="flex gap-0 w-max h-max"
+            style={{ willChange: "transform" }}
+          >
+            {/* 3. Gandakan data dari API dan map untuk render CardTestimonials */}
+            {[...testimonials, ...testimonials].map((item, index) => (
+              <div
+                key={`${item.id}-${index}`}
+                className="inline-block px-2 min-w-[300px]"
+              >
+                <CardTestimonials
+                  name={item.nama_pelanggan}
+                  date={formatDate(item.tanggal)}
+                  message={item.pesan}
+                  initial={getInitials(item.nama_pelanggan)}
+                  stars={5} // Bintang bisa di-hardcode jika tidak ada di API
+                  link={item.link}
+                />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

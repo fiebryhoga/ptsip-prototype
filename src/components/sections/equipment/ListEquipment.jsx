@@ -1,46 +1,16 @@
-// components/sections/home/ListEquipment.jsx
+// src/components/sections/equipment/ListEquipment.jsx
 
-import React, { useState, useEffect } from "react";
-import CardEquipment from "@/components/common/CardEquipment"; // Pastikan path ini benar
+import React, { useContext } from "react"; // Impor useContext, hapus useState dan useEffect
+import CardEquipment from "@/components/common/CardEquipment";
+import { DataContext } from "@/context/DataContext"; // Impor DataContext
 
 const ListEquipment = () => {
-  // State untuk menyimpan data equipment dari API
-  const [equipments, setEquipments] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Fungsi untuk mengambil data dari API
-    const fetchEquipments = async () => {
-      const token = "2|8veRdrHIjFL4LUrPGs6TB0jjltZlCAuu9F6wNrvl"; // Token API Anda
-
-      try {
-        const response = await fetch("http://127.0.0.1:8000/api/equipments", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            Accept: "application/json",
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        setEquipments(data); // Simpan data ke state
-      } catch (error) {
-        console.error("Gagal mengambil data equipment:", error);
-      } finally {
-        setLoading(false); // Hentikan loading
-      }
-    };
-
-    fetchEquipments();
-  }, []); // Efek ini hanya berjalan sekali saat komponen dimuat
+  // Ambil data dari context, bukan dari state lokal
+  const { equipments, loading, error } = useContext(DataContext);
 
   return (
-    <div className="px-36 flex flex-col justify-center items-center w-full pb-20">
-      <div className="flex flex-row gap-4 rounded-full px-10 py-2 bg-[#00662C]/10">
-        {/* Mengganti ikon dengan inline SVG */}
+    <div className="w-full py-20 flex flex-col px-4 sm:px-8 md:px-20 lg:px-24 xl:px-36 justify-center items-center gap-10">
+      <div className="flex flex-row gap-4 rounded-full px-8 sm:px-10 py-2 bg-[#00662C]/10">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -64,7 +34,6 @@ const ListEquipment = () => {
           <path d="M14.25 19.5a.75.75 0 0 1 .75.75v.75a.75.75 0 0 1-1.5 0v-.75a.75.75 0 0 1 .75-.75Z" />
           <path d="m2.25 12 5.023 5.023a.75.75 0 0 1 0 1.06-1.5 1.5 0 0 0 0 2.122.75.75 0 0 1-1.06 1.061L.47 15.53a.75.75 0 0 1 0-1.06l5.023-5.023a.75.75 0 0 1 1.06 0l3.758 3.757a.75.75 0 0 1 0 1.061-1.5 1.5 0 0 0 0 2.121.75.75 0 0 1-1.06 1.061L3.97 12.97a.75.75 0 0 1 0-1.06l5.023-5.023a.75.75 0 1 1 1.06 1.06L5.023 12.97a.75.75 0 0 0 0 1.06l3.53-3.53-3.757-3.757a.75.75 0 0 1 0-1.06l5.024-5.023a.75.75 0 0 1 1.06 0l5.023 5.023a.75.75 0 0 1 0 1.06L15.97 12.97a.75.75 0 0 0 0 1.06l3.53-3.53-3.757-3.757a.75.75 0 0 1 0-1.06l5.024-5.023a.75.75 0 0 1 1.06 0l5.023 5.023a.75.75 0 0 1 0 1.06l-5.023 5.023a.75.75 0 0 1-1.06 0l-3.758-3.757a.75.75 0 0 1 0-1.061 1.5 1.5 0 0 0 0-2.121.75.75 0 0 1 1.06-1.061l5.293 5.293a.75.75 0 0 1 0 1.06l-5.023 5.023a.75.75 0 0 1-1.06 0l-3.758-3.757a.75.75 0 0 1 0-1.061 1.5 1.5 0 0 0 0-2.121.75.75 0 0 1 1.06-1.061l5.293 5.293a.75.75 0 0 1 0 1.06l-5.023 5.023a.75.75 0 0 1-1.06 0-1.5 1.5 0 0 0-2.121 0 .75.75 0 0 1-1.06-1.06l5.023-5.023a.75.75 0 0 1 1.06 0l3.757 3.757a.75.75 0 0 0 1.06 0l-5.292-5.293a.75.75 0 0 1 0-1.06Z" />
         </svg>
-
         <p className="text-sm font-semibold text-[#00662C]">
           List of Equipment
         </p>
@@ -74,9 +43,16 @@ const ListEquipment = () => {
         <p className="text-center text-gray-500 mt-10">
           Memuat data equipment...
         </p>
+      ) : error ? (
+        <p className="text-center text-red-500 mt-10">
+          Gagal memuat data equipment.
+        </p>
+      ) : equipments.length === 0 ? (
+        <p className="text-center text-gray-500 mt-10">
+          Tidak ada equipment yang tersedia.
+        </p>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-4 gap-10 pt-10">
-          {/* Loop melalui data equipment dan render CardEquipment untuk setiap item */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 w-full pt-10">
           {equipments.map((equipment) => (
             <CardEquipment key={equipment.id} equipment={equipment} />
           ))}

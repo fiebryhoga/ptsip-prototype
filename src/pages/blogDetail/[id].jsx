@@ -1,14 +1,13 @@
-// File: pages/blogDetail/[id].jsx (atau di mana pun file Anda berada)
+// pages/blogDetail/[id].jsx
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-// 1. Tambahkan FiArrowLeft untuk ikon kembali
 import { FiUser, FiCalendar, FiClock, FiArrowLeft } from "react-icons/fi";
 import { format } from "date-fns";
 import id from "date-fns/locale/id";
-import Link from "next/link"; // Pastikan Link diimpor
+import Link from "next/link";
 
 const BlogDetail = () => {
   const router = useRouter();
@@ -16,10 +15,15 @@ const BlogDetail = () => {
 
   const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null); // Tambahkan state untuk error
   const [processedContent, setProcessedContent] = useState("");
 
   useEffect(() => {
     if (!blogId) return;
+
+    // Reset state setiap kali blogId berubah
+    setLoading(true);
+    setError(null);
 
     const fetchArticle = async () => {
       const apiUrl = `http://127.0.0.1:8000/api/blogs/${blogId}`;
@@ -33,11 +37,13 @@ const BlogDetail = () => {
             Accept: "application/json",
           },
         });
-        if (!response.ok) throw new Error("Artikel tidak ditemukan");
-
+        if (!response.ok) {
+          throw new Error("Artikel tidak ditemukan atau terjadi kesalahan.");
+        }
         const data = await response.json();
         setArticle(data);
 
+        // Proses URL gambar di dalam konten
         if (data.content) {
           const contentWithAbsoluteImageUrls = data.content.replace(
             /src="\/storage\//g,
@@ -45,8 +51,9 @@ const BlogDetail = () => {
           );
           setProcessedContent(contentWithAbsoluteImageUrls);
         }
-      } catch (error) {
-        console.error("Gagal mengambil artikel:", error);
+      } catch (err) {
+        setError(err.message);
+        console.error("Gagal mengambil artikel:", err);
       } finally {
         setLoading(false);
       }
@@ -55,11 +62,29 @@ const BlogDetail = () => {
     fetchArticle();
   }, [blogId]);
 
-  if (loading || !article) {
+  // Tampilan saat loading atau error
+  if (loading) {
     return (
       <>
         <Navbar />
         <div className="text-center py-40">Memuat artikel...</div>
+        <Footer />
+      </>
+    );
+  }
+
+  if (error || !article) {
+    return (
+      <>
+        <Navbar />
+        <div className="text-center py-40">
+          <p className="text-red-500">
+            {error || "Artikel tidak dapat dimuat."}
+          </p>
+          <Link href="/blog" className="text-green-700 mt-4 inline-block">
+            Kembali ke Blog
+          </Link>
+        </div>
         <Footer />
       </>
     );
@@ -76,46 +101,52 @@ const BlogDetail = () => {
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <Navbar />
-      <main className="flex-grow mx-auto flex flex-col w-full justify-start items-start px-4 md:px-96 py-10 mt-20">
-        {/* --- TOMBOL KEMBALI DITAMBAHKAN DI SINI --- */}
-        <div className="mb-8">
-          <Link href="/blog" legacyBehavior>
-            <a className="inline-flex items-center gap-2 text-sm text-green-700 hover:text-green-900 font-semibold transition-colors">
-              <FiArrowLeft size={16} />
-              Kembali ke Daftar Blog
-            </a>
+      <main className="flex-grow mx-auto flex flex-col w-full justify-start items-center px-4 sm:px-8 md:px-20 lg:px-48 xl:px-64 py-10 mt-20">
+        {/* Tombol Kembali */}
+        <div className="w-full max-w-4xl mb-8">
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 text-sm text-green-700 hover:text-green-900 font-semibold transition-colors"
+          >
+            <FiArrowLeft size={16} />
+            <span>Kembali ke Daftar Blog</span>
           </Link>
         </div>
 
-        <h1 className="text-3xl md:text-4xl font-bold text-green-900 mb-4 font-sans text-left">
-          {article.title}
-        </h1>
-        <div className="flex flex-wrap gap-6 text-sm text-black/60 mb-6">
-          <div className="flex items-center gap-2">
-            <FiUser size={14} />
-            <span>Admin - {article.author_name}</span>
+        <div className="w-full max-w-4xl">
+          <h1 className="text-3xl md:text-4xl font-bold text-green-900 mb-4 font-sans text-left">
+            {article.title}
+          </h1>
+          {/* Meta Info */}
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-black/60 mb-6">
+            <div className="flex items-center gap-2">
+              <FiUser size={14} />
+              <span>{article.author_name || "Admin"}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <FiCalendar size={14} />
+              <span>{formattedDate}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <FiClock size={14} />
+              <span>{formattedTime}</span>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <FiCalendar size={14} />
-            <span>{formattedDate}</span>
+          {/* Gambar Utama */}
+          <div className="w-full h-[250px] sm:h-[350px] md:h-[400px] overflow-hidden rounded-xl shadow-lg mb-8">
+            <img
+              src={imageUrl}
+              alt={article.title}
+              className="w-full h-full object-cover"
+            />
           </div>
-          <div className="flex items-center gap-2">
-            <FiClock size={14} />
-            <span>{formattedTime}</span>
-          </div>
-        </div>
-        <div className="w-full h-[400px] overflow-hidden rounded-xl shadow mb-8">
-          <img
-            src={imageUrl}
-            alt={article.title}
-            className="w-full h-full object-cover"
+
+          {/* Konten Artikel */}
+          <article
+            className="prose prose-sm md:prose-base max-w-none text-justify text-black/80 font-sans"
+            dangerouslySetInnerHTML={{ __html: processedContent }}
           />
         </div>
-
-        <article
-          className="prose prose-sm md:prose-base max-w-none text-justify text-black/80 font-sans"
-          dangerouslySetInnerHTML={{ __html: processedContent }}
-        />
       </main>
       <Footer />
     </div>

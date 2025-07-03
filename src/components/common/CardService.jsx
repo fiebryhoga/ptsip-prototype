@@ -1,26 +1,42 @@
+// src/components/common/CardService.jsx
+
 import React from "react";
 
-// Menerima props untuk gambar, judul, dan deskripsi
 const CardService = ({ imageUrl, title, description }) => {
   return (
     <div
-      className="w-full flex flex-row rounded-xl h-52 shadow-md
-                    hover:transform hover:scale-105 hover:duration-300 duration-300 ease-in-out hover:ease-in-out hover:transition-all 
-                    transition-all shadow-black/20"
+      className="group w-full flex flex-col lg:flex-row rounded-xl h-auto lg:h-52 shadow-lg 
+                 hover:shadow-lg hover:scale-[1.02] transition-all duration-300 ease-in-out
+                 bg-white" // Tambahkan bg-white untuk memastikan konsistensi
     >
-      <div className="bg-gray-100 w-2/5 rounded-l-xl overflow-hidden">
+      {/* Kolom Gambar */}
+      <div className="w-full lg:w-2/5 h-48 lg:h-full rounded-t-xl lg:rounded-l-xl lg:rounded-t-none overflow-hidden">
         <img
-          className="w-full h-full object-cover rounded-l-xl"
+          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" // Efek zoom pada gambar
           src={imageUrl}
           alt={title}
+          onError={(e) => {
+            e.target.onerror = null; // Mencegah loop error jika placeholder juga gagal
+            e.target.src = "/assets/image/placeholder.png";
+          }}
         />
       </div>
-      <div className="w-3/5 flex flex-col border border-[#00662C]/10 rounded-r-xl px-6 py-6 gap-4 justify-start">
-        <div className="flex flex-col justify-start items-start gap-6">
-          <h3 className="text-[#00662C] text-lg font-semibold">
+
+      {/* Kolom Konten */}
+      <div
+        className="w-full lg:w-3/5 flex flex-col border border-t-0 lg:border-t lg:border-l-0 border-gray-200 
+                 rounded-b-xl lg:rounded-r-xl lg:rounded-b-none 
+                 p-4 lg:p-6 justify-center" // Padding disesuaikan untuk mobile
+      >
+        <div className="flex flex-col gap-2">
+          {" "}
+          {/* Mengurangi gap untuk tampilan lebih rapat */}
+          <h3 className="text-[#00662C] text-lg font-semibold line-clamp-2">
             {title}
           </h3>
-          <p className="text-sm font-normal text-[#403601] text-justify line-clamp-4">
+          <p className="text-sm font-normal text-gray-700 text-justify line-clamp-4">
+            {" "}
+            {/* Warna teks dibuat lebih standar */}
             {description}
           </p>
         </div>

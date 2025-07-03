@@ -6,7 +6,7 @@ const CardFAQ = ({ question, answer }) => {
   const toggleOpen = () => setIsOpen(!isOpen);
 
   return (
-    <div className="border border-green-700/40 rounded-xl text-base text-green-700 font-semibold">
+    <div className="border border-green-700/40 rounded-xl text-base text-green-700 font-medium">
       <div
         onClick={toggleOpen}
         className="flex flex-row gap-4 cursor-pointer hover:bg-green-700/10 transition-all duration-300 ease-in-out justify-start items-center py-4 px-4"
@@ -31,7 +31,7 @@ const CardFAQ = ({ question, answer }) => {
       </div>
 
       {isOpen && (
-        <div className="px-12 py-2 pb-4 text-green-900 font-normal">
+        <div className="px-12 py-2 pb-4 text-green-900 font-medium text-justify">
           {answer}
         </div>
       )}

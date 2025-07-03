@@ -1,93 +1,54 @@
-import React, { useRef, useEffect, useState } from "react"; // Tambahkan useState
+// src/components/sections/home/Clients.jsx
+
+import React, { useRef, useEffect, useContext } from "react"; // Impor useContext
+import { DataContext } from "@/context/DataContext"; // Impor DataContext
 
 const Clients = () => {
   const trackRef = useRef(null);
   const isHovered = useRef(false);
   const position = useRef(0);
 
-  const [mitras, setMitras] = useState([]); // State untuk menyimpan data mitra
-  const [loading, setLoading] = useState(true); // State untuk loading
-  const [error, setError] = useState(null); // State untuk error
+  // Ambil data mitras, loading, dan error dari context
+  const { mitras, loading, error } = useContext(DataContext);
 
-  const API_URL = "http://127.0.0.1:8000/api/mitras"; // Endpoint API untuk mitra
-  const BASE_URL = "http://127.0.0.1:8000"; // Base URL untuk gambar dari Laravel storage
+  const BASE_URL = "http://127.0.0.1:8000";
 
   useEffect(() => {
-    const fetchMitras = async () => {
-      const token = "2|8veRdrHIjFL4LUrPGs6TB0jjltZlCAuu9F6wNrvl"; // Token Bearer Anda
-
-      try {
-        const response = await fetch(API_URL, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            Accept: "application/json",
-          },
-        });
-
-        if (!response.ok) {
-          const errorBody = await response.json();
-          throw new Error(
-            `HTTP error! Status: ${response.status}, Message: ${
-              errorBody.message || "Unknown error"
-            }`
-          );
-        }
-
-        const data = await response.json();
-        // Filter mitra yang punya logo (karena kita set null di seeder)
-        // Jika Anda akan mengedit dan mengupload semua logo, filter ini bisa dihapus nanti
-        const mitrasWithLogo = data.filter((mitra) => mitra.logo_url);
-        setMitras(mitrasWithLogo); // Simpan data mitra ke state
-      } catch (err) {
-        console.error("Error fetching mitras:", err);
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchMitras();
-  }, []); // [] agar fetch hanya berjalan sekali saat komponen di-mount
-
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track || mitras.length === 0) return; // Hentikan animasi jika tidak ada track/mitra
+    // Animasi hanya berjalan jika data sudah ada dan tidak sedang di-hover
+    if (!trackRef.current || loading || error || mitras.length === 0) return;
 
     let animationFrameId;
 
     const animate = () => {
-      if (!isHovered.current) {
-        position.current -= 0.5; // speed
-        // Jika posisi sudah melewati setengah panjang track, reset ke 0
-        // Ini menciptakan efek loop tak terbatas
-        if (Math.abs(position.current) >= track.scrollWidth / 2) {
+      if (!isHovered.current && trackRef.current) {
+        position.current -= 0.5; // Kecepatan scroll
+        if (Math.abs(position.current) >= trackRef.current.scrollWidth / 2) {
           position.current = 0;
         }
-        track.style.transform = `translateX(${position.current}px)`;
+        trackRef.current.style.transform = `translateX(${position.current}px)`;
       }
       animationFrameId = requestAnimationFrame(animate);
     };
 
     animationFrameId = requestAnimationFrame(animate);
 
-    return () => cancelAnimationFrame(animationFrameId); // Bersihkan saat komponen unmount
-  }, [mitras]); // Jalankan ulang animasi jika data mitra berubah
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [mitras, loading, error]); // Jalankan ulang efek jika dependensi berubah
 
   return (
-    <div className="flex flex-col items-center px-4 md:px-40 py-12 w-full gap-12 mb-20">
-      {" "}
-      {/* Tambahkan responsivitas */}
-      {/* ... Bagian Trusted by Companies dan Statistik Branding (tetap dikomentari atau sesuaikan) ... */}
-      {/* Carousel */}
+    <div className="flex flex-col items-center px-4 sm:px-6 md:px-24 xl:px-40 py-4 md:py-12 w-full gap-24 mb-20">
+      
       <div
-        className="logo-scroll-container w-full overflow-hidden relative" // Tambahkan lebar penuh dan overflow
+        className="logo-scroll-container w-full overflow-hidden relative"
         onMouseEnter={() => (isHovered.current = true)}
         onMouseLeave={() => (isHovered.current = false)}
       >
         {loading ? (
           <p className="text-center text-gray-600">Loading client logos...</p>
         ) : error ? (
-          <p className="text-center text-red-600">Error: {error}</p>
+          <p className="text-center text-red-600">
+            Error loading clients: {error}
+          </p>
         ) : mitras.length === 0 ? (
           <p className="text-center text-gray-600">
             No client logos available.
@@ -98,15 +59,18 @@ const Clients = () => {
             ref={trackRef}
             style={{ willChange: "transform" }}
           >
-            {/* Gandakan data mitra untuk efek loop tak terbatas */}
-            {[...mitras, ...mitras].map((mitra, index) => (
-              <img
-                key={mitra.id ? `${mitra.id}-${index}` : `placeholder-${index}`} // Key unik
-                src={`${BASE_URL}${mitra.logo_url}`} // Menggunakan logo_url dari API
-                alt={`client-${mitra.nama_perusahaan}`} // Alt text dari nama perusahaan
-                className="h-24 px-10 object-contain inline-block"
-              />
-            ))}
+            {/* Gandakan data untuk efek loop tak terbatas */}
+            {[...mitras, ...mitras].map(
+              (mitra, index) =>
+                mitra.logo_url && (
+                  <img
+                    key={`${mitra.id}-${index}`}
+                    src={`${BASE_URL}${mitra.logo_url}`}
+                    alt={mitra.nama_perusahaan || `client-logo-${index}`}
+                    className="h-12 sm:h-14 md:h-20 lg:h-24 px-4 sm:px-6 md:px-8 lg:10 object-contain inline-block"
+                  />
+                )
+            )}
           </div>
         )}
       </div>
