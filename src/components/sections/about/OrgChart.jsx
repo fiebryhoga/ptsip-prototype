@@ -4,7 +4,7 @@ import { RiBuilding3Fill } from "react-icons/ri";
 import { DataContext } from "@/context/DataContext";
 
 // Import gambar lokal sebagai foto default
-// import `/assets/image/org/orang.jpg` from "@`/assets/image/org/orang.jpg`";
+// import `/assets/image/org/1.png` from "@`/assets/image/org/1.png`";
 
 const OrgChart = () => {
 
@@ -27,14 +27,12 @@ const OrgChart = () => {
             {/* Director */}
             <tr>
               <td align="center" colSpan={8} className="border-0 h-24">
-                
-                    <CardOrg
-                      key={1}
-                      name={"nama"}
-                      position={"jabatan"}
-                      imageUrl={`/assets/image/org/orang.jpg`}
-                    />
-                  
+                <CardOrg
+                  key={1}
+                  name={"Ir Wahyu Wuryanto"}
+                  position={"Director"}
+                  imageUrl={`/assets/image/org/1.png`}
+                />
               </td>
             </tr>
             <tr className="border-0 border-t-0 border-b-0 border-r-0 border-l-0">
@@ -64,56 +62,48 @@ const OrgChart = () => {
                 className="border-0 border-r-0 border-l-0 w-10 sm:w-14 md:w-16 h-10 md:h-16"
                 colSpan={2}
               >
-                
-                    <CardOrg
-                      key={1}
-                      name={"nama"}
-                      position={"jabatan"}
-                      imageUrl={`/assets/image/org/orang.jpg`}
-                    />
-                  
+                <CardOrg
+                  key={2}
+                  name={"Darmadi"}
+                  position={"Project Manage"}
+                  imageUrl={`/assets/image/org/2.png`}
+                />
               </td>
               <td
                 align="center"
                 className="border-0 border-r-0 border-l-0 w-10 sm:w-14 md:w-16 h-10 md:h-16"
                 colSpan={2}
               >
-                
-                    <CardOrg
-                      key={1}
-                      name={"nama"}
-                      position={"jabatan"}
-                      imageUrl={`/assets/image/org/orang.jpg`}
-                    />
-                  
+                <CardOrg
+                  key={3}
+                  name={"Hanif Rusidy, S.T"}
+                  position={"Technical Manager"}
+                  imageUrl={`/assets/image/org/3.png`}
+                />
               </td>
               <td
                 align="center"
                 className="border-0 border-r-0 border-l-0 w-10 sm:w-14 md:w-16 h-10 md:h-16"
                 colSpan={2}
               >
-                
-                    <CardOrg
-                      key={1}
-                      name={"nama"}
-                      position={"jabatan"}
-                      imageUrl={`/assets/image/org/orang.jpg`}
-                    />
-                  
+                <CardOrg
+                  key={4}
+                  name={"Muhamad Bayurizki"}
+                  position={"General Affair"}
+                  imageUrl={`/assets/image/org/4.png`}
+                />
               </td>
               <td
                 align="center"
                 className="border-0 border-r-0 border-l-0 w-10 sm:w-14 md:w-16 h-10 md:h-16"
                 colSpan={2}
               >
-                
-                    <CardOrg
-                      key={1}
-                      name={"nama"}
-                      position={"jabatan"}
-                      imageUrl={`/assets/image/org/orang.jpg`}
-                    />
-                  
+                <CardOrg
+                  key={5}
+                  name={"Teddy Arief Setyawan"}
+                  position={"Finance Manager"}
+                  imageUrl={`/assets/image/org/5.png`}
+                />
               </td>
             </tr>
 
@@ -144,28 +134,24 @@ const OrgChart = () => {
                 className="border-0 border-r-0 border-l-0 w-10 sm:w-14 md:w-16 h-10 md:h-16"
                 colSpan={2}
               >
-                
-                    <CardOrg
-                      key={1}
-                      name={"nama"}
-                      position={"jabatan"}
-                      imageUrl={`/assets/image/org/orang.jpg`}
-                    />
-                  
+                <CardOrg
+                  key={6}
+                  name={"M. Saminudin"}
+                  position={"Supervisor"}
+                  imageUrl={`/assets/image/org/6.png`}
+                />
               </td>
               <td
                 align="center"
                 className="border-0 border-r-0 border-l-0 w-10 sm:w-14 md:w-16 h-10 md:h-16"
                 colSpan={2}
               >
-                
-                    <CardOrg
-                      key={1}
-                      name={"nama"}
-                      position={"jabatan"}
-                      imageUrl={`/assets/image/org/orang.jpg`}
-                    />
-                  
+                <CardOrg
+                  key={7}
+                  name={"Bagus Krida, S.T"}
+                  position={"Site Engineer"}
+                  imageUrl={`/assets/image/org/7.png`}
+                />
               </td>
               <td className="border-0 border-r-0 border-l-0 w-10 sm:w-14 md:w-16 border-green-800 h-10 md:h-16"></td>
               <td className="border-0 border-r-0 border-l-0 w-10 sm:w-14 md:w-16 border-green-800 h-10 md:h-16"></td>
@@ -200,56 +186,48 @@ const OrgChart = () => {
                 className="border-0 border-r-0 border-l-0 w-10 sm:w-14 md:w-16 h-10 md:h-16"
                 colSpan={2}
               >
-                
-                    <CardOrg
-                      key={1}
-                      name={"nama"}
-                      position={"jabatan"}
-                      imageUrl={`/assets/image/org/orang.jpg`}
-                    />
-                  
+                <CardOrg
+                  key={8}
+                  name={"Subhan"}
+                  position={"Crawler Crane Operator Leader"}
+                  imageUrl={`/assets/image/org/8.png`}
+                />
               </td>
               <td
                 align="center"
                 className="border-0 border-r-0 border-l-0 w-10 sm:w-14 md:w-16 h-10 md:h-16"
                 colSpan={2}
               >
-                
-                    <CardOrg
-                      key={1}
-                      name={"nama"}
-                      position={"jabatan"}
-                      imageUrl={`/assets/image/org/orang.jpg`}
-                    />
-                  
+                <CardOrg
+                  key={9}
+                  name={"Slamet Haeroni"}
+                  position={"Helper Leader"}
+                  imageUrl={`/assets/image/org/9.png`}
+                />
               </td>
               <td
                 align="center"
                 className="border-0 border-r-0 border-l-0 w-10 sm:w-14 md:w-16 h-10 md:h-16"
                 colSpan={2}
               >
-                
-                    <CardOrg
-                      key={1}
-                      name={"nama"}
-                      position={"jabatan"}
-                      imageUrl={`/assets/image/org/orang.jpg`}
-                    />
-                  
+                <CardOrg
+                  key={10}
+                  name={"Yudi Winarno"}
+                  position={"Rigger Leader"}
+                  imageUrl={`/assets/image/org/10.png`}
+                />
               </td>
               <td
                 align="center"
                 className="border-0 border-r-0 border-l-0 w-10 sm:w-14 md:w-16 h-10 md:h-16"
                 colSpan={2}
               >
-                
-                    <CardOrg
-                      key={1}
-                      name={"nama"}
-                      position={"jabatan"}
-                      imageUrl={`/assets/image/org/orang.jpg`}
-                    />
-                  
+                <CardOrg
+                  key={11}
+                  name={"Supriyanto"}
+                  position={"Rough-Terrain Crane Operator Leader"}
+                  imageUrl={`/assets/image/org/11.png`}
+                />
               </td>
             </tr>
             <tr className="border-0 border-r-0 border-l-0">
