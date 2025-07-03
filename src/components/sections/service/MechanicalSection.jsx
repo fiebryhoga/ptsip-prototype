@@ -12,7 +12,7 @@ const services = [
       "Installation and erection of steel frameworks and precast concrete elements for various industrial, commercial, and infrastructure projects. We ensure structural integrity, alignment accuracy, and compliance with safety standards throughout the process.",
     jenis: "Mechanical, Construction, and Lifting",
     gambar_url:
-      "/storage/services/qNBM6Md5U9Bx9gueOMZCVgcxFR6bbwgSYxi9w1r1.webp",
+      "/assets/image/contoh.png",
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const services = [
       "Mechanical services including fabrication, assembly, maintenance, and repair of machinery and industrial components. Our team delivers reliable solutions for both static and rotating equipment across multiple sectors.",
     jenis: "Mechanical, Construction, and Lifting",
     gambar_url:
-      "/storage/services/HfmQF5pwGu8vDOR46JFe3VEzoNRZhSqaXW4DrdWK.jpg",
+      "/assets/image/contoh.png",
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ const services = [
       "Installation of machines, equipment, and heavy industrial systems with high precision. We manage end-to-end processes, from alignment and fitting to testing and commissioning, tailored to client specifications.",
     jenis: "Mechanical, Construction, and Lifting",
     gambar_url:
-      "/storage/services/otXE9L8mQ5x82wIUUp4BuelmNBPme174ifp1yutq.webp",
+      "/assets/image/contoh.png",
   },
   {
     id: 4,
@@ -39,7 +39,7 @@ const services = [
       "Engineering, fabrication, and installation of piping systems for fluid and gas transport. We handle various piping materials and standards, ensuring leak-proof and long-lasting systems for industrial applications.",
     jenis: "Mechanical, Construction, and Lifting",
     gambar_url:
-      "/storage/services/YhC8sicYrtELTXya8hcXc7Lce5T30zFNiG5LIixR.jpg",
+      "/assets/image/contoh.png",
   },
   {
     id: 5,
@@ -48,7 +48,7 @@ const services = [
       "Specialized heavy lifting operations on land and offshore sites using advanced equipment and certified personnel. We emphasize safety, precision, and efficiency in moving large and sensitive structures or equipment.",
     jenis: "Mechanical, Construction, and Lifting",
     gambar_url:
-      "/storage/services/3HMlhPXDZpIhVOrXQWLue52W9Q9t7vXyXFyPlip7.png",
+      "/assets/image/contoh.png",
   },
 ];
 

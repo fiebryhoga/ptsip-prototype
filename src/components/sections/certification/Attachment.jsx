@@ -7,20 +7,17 @@ const certifications = [
   {
     id: 1,
     nama: "ISO 9001:2015",
-    gambar_url:
-      "/storage/certifications/LbUHVcH5ypUTks747bHykdUjYF8awPyk8jrdjWWU.png",
+    gambar_url: "/assets/image/certificate/certificate1.png",
   },
   {
     id: 2,
     nama: "ISO 45001:2018",
-    gambar_url:
-      "/storage/certifications/LYwyzGmlb1G2h4D86B6TU7lOzGyiBLQv72gb8J9y.png",
+    gambar_url: "/assets/image/certificate/certificate2.png",
   },
   {
     id: 3,
     nama: "Izin Usaha Jasa Kontruksi Nasional",
-    gambar_url:
-      "/storage/certifications/NpLwPPeEyjxwRgok29jmHi39eoArWQ73tREPKEjC.png",
+    gambar_url: "/assets/image/certificate/certificate3.png",
   },
 ];
 

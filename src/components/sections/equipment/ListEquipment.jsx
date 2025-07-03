@@ -13,7 +13,7 @@ const dummyEquipments = [
       "A powerful crawler crane known for its stability and lifting capacity in various construction environments.",
     berat: 100,
     gambar_url:
-      "/storage/equipments/8hBuvtDObGtQPzwPiToRaeasv4T0vDpL1C5KV4ri.jpg",
+      "/assets/image/Contoh.png",
   },
   {
     id: 10,
@@ -24,7 +24,7 @@ const dummyEquipments = [
     description:
       "High-performance crawler crane designed for heavy-duty lifting and large-scale construction projects.",
     berat: 250,
-    gambar_url: null,
+    gambar_url:       "/assets/image/Contoh.png",
   },
   {
     id: 11,
@@ -35,7 +35,7 @@ const dummyEquipments = [
     description:
       "Another robust model of Kobelco crawler crane, offering exceptional lifting capabilities and operational efficiency.",
     berat: 250,
-    gambar_url: null,
+    gambar_url:       "/assets/image/Contoh.png",
   },
   {
     id: 12,
@@ -46,7 +46,7 @@ const dummyEquipments = [
     description:
       "A versatile Sumitomo crawler crane, ideal for various construction and infrastructure lifting tasks.",
     berat: 150,
-    gambar_url: null,
+    gambar_url:       "/assets/image/Contoh.png",
   },
   {
     id: 13,
@@ -57,7 +57,7 @@ const dummyEquipments = [
     description:
       "Reliable Sumitomo crawler crane model, providing solid performance for medium to heavy lifting applications.",
     berat: 150,
-    gambar_url: null,
+    gambar_url:       "/assets/image/Contoh.png",
   },
   {
     id: 14,
@@ -68,7 +68,7 @@ const dummyEquipments = [
     description:
       "A durable Sumitomo crawler crane, suitable for a range of construction and lifting demands.",
     berat: 150,
-    gambar_url: null,
+    gambar_url:       "/assets/image/Contoh.png",
   },
   {
     id: 15,
@@ -79,7 +79,7 @@ const dummyEquipments = [
     description:
       "A compact yet powerful rough-terrain crane from Kobelco, perfect for demanding job sites with uneven ground.",
     berat: 45,
-    gambar_url: null,
+    gambar_url:       "/assets/image/Contoh.png",
   },
   {
     id: 16,
@@ -90,7 +90,7 @@ const dummyEquipments = [
     description:
       "KATO rough-terrain crane, offering excellent maneuverability and lifting capacity for tight and challenging spaces.",
     berat: 25,
-    gambar_url: null,
+    gambar_url:       "/assets/image/Contoh.png",
   },
 ];
 

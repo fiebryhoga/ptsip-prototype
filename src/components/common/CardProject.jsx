@@ -1,22 +1,21 @@
-// src/components/common/CardProject.jsx
-
 import React from "react";
 
 const CardProject = ({ project }) => {
   if (!project) return null;
 
-  const imageUrl = project.gambar_url
-    ? `http://127.0.0.1:8000${project.gambar_url}`
-    : "/assets/image/placeholder.png";
+  // `project.gambar_url` sekarang berisi path string dari data dummy.
+  // Jika path tidak ada, gambar placeholder akan digunakan.
+  const imageUrl = project.gambar_url || "/assets/image/placeholder.png";
 
   return (
-    <div className="flex flex-col justify-start items-start w-full h-auto border border-green-700/20 shadow-xl rounded-2xl overflow-hidden">
+    <div className="flex flex-col justify-start items-start w-full h-auto border border-green-700/20 shadow-xl rounded-2xl overflow-hidden transform hover:-translate-y-1 transition-transform duration-300">
       {/* Gambar */}
       <div className="w-full h-52 bg-gray-200 relative">
         <img
           className="w-full h-full object-cover"
           src={imageUrl}
           alt={project.nama_project}
+          // onError tetap berguna sebagai fallback jika path gambar salah
           onError={(e) => {
             e.target.onerror = null;
             e.target.src = "/assets/image/placeholder.png";

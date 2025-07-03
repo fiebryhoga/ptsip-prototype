@@ -11,8 +11,7 @@ const services = [
     description:
       "Full-service support for the construction, installation, and maintenance of power generation plants, including mechanical and lifting operations for turbines, boilers, and auxiliary systems.",
     jenis: "Fields of Business",
-    gambar_url:
-      "/storage/services/kkbGXcE5WzqKeuYYGY7SYXsCAiKnMaodLsxItOPW.jpg",
+    gambar_url: "/assets/image/contoh.png",
   },
   {
     id: 7,
@@ -20,8 +19,7 @@ const services = [
     description:
       "Comprehensive services for building and equipping concrete batching and production plants. We provide reliable structural and mechanical solutions to support high-output production facilities.",
     jenis: "Fields of Business",
-    gambar_url:
-      "/storage/services/imbypiqJXjtH7J4pZiTwHr81px3eX28k8yqm8Va3.jpg",
+    gambar_url: "/assets/image/contoh.png",
   },
   {
     id: 8,
@@ -29,8 +27,7 @@ const services = [
     description:
       "Development of infrastructure and systems for efficient handling, movement, and processing of raw materials and goods, including conveyor systems, silos, and loading equipment.",
     jenis: "Fields of Business",
-    gambar_url:
-      "/storage/services/VVTZehMl3FZVzxa4luCG1GMwrUn1MIUwrHpXakZJ.jpg",
+    gambar_url: "/assets/image/contoh.png",
   },
   {
     id: 9,
@@ -38,8 +35,7 @@ const services = [
     description:
       "Expert consultancy services for complex lifting operations, including planning, risk assessment, and method statements to ensure safe, efficient, and cost-effective lifting activities.",
     jenis: "Fields of Business",
-    gambar_url:
-      "/storage/services/2tU755yJaD4DuQKaBF3axfoVPL4hbZKKcKRG5aqf.webp",
+    gambar_url: "/assets/image/contoh.png",
   },
   {
     id: 10,
@@ -47,8 +43,7 @@ const services = [
     description:
       "Construction services for major infrastructure projects, such as bridges, toll roads, and marine jetties. We offer integrated solutions from foundation to superstructure, tailored to project requirements.",
     jenis: "Fields of Business",
-    gambar_url:
-      "/storage/services/eSLPFFIeY0PcHwzFYgtbRJIgru4WGDwRFjavqgBJ.jpg",
+    gambar_url: "/assets/image/contoh.png",
   },
   {
     id: 11,
@@ -56,8 +51,7 @@ const services = [
     description:
       "Rental services for various types of cranes and lifting equipment to support construction, industrial maintenance, and special projects, including operator support and logistical planning.",
     jenis: "Fields of Business",
-    gambar_url:
-      "/storage/services/c8tn5qCWSaHEMSqesf66UpummkbHg3vEsaABpPa3.jpg",
+    gambar_url: "/assets/image/contoh.png",
   },
   {
     id: 12,
@@ -65,8 +59,7 @@ const services = [
     description:
       "Design and construction of modern warehouse facilities optimized for storage, logistics, and distribution. We focus on functionality, scalability, and durability for long-term operations.",
     jenis: "Fields of Business",
-    gambar_url:
-      "/storage/services/HDbzhiN1E08cYZOUc2aqHNWkjLsHwtD4G2VYMgkN.webp",
+    gambar_url: "/assets/image/contoh.png",
   },
   {
     id: 13,
@@ -74,8 +67,7 @@ const services = [
     description:
       "Foundation piling services for diverse terrains and environments, including soft soil and coastal areas. We use modern piling techniques to ensure strong, reliable foundations for any type of structure.",
     jenis: "Fields of Business",
-    gambar_url:
-      "/storage/services/kka5BEsIoNp5NFSpciAmBLAIwG9vBdutrsMqOJZF.jpg",
+    gambar_url: "/assets/image/contoh.png",
   },
 ];
 
