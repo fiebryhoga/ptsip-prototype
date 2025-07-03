@@ -52,7 +52,7 @@ const Clients = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center px-4 mt-4 sm:px-6 md:px-24 xl:px-40 py-4 md:py-12 w-full gap-24 mb-20">
+    <div className="flex flex-col items-center px-4 mt-10 sm:px-6 md:px-24 xl:px-40 py-4 md:py-12 w-full gap-24 mb-20">
       <div
         className="logo-scroll-container w-full overflow-hidden relative"
         onMouseEnter={() => (isHovered.current = true)}
