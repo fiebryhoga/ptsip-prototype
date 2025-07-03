@@ -50,7 +50,7 @@ const CoreValue = () => {
         </div>
 
         {/* Baris 2 */}
-        <div className="flex flex-wrap justify-center gap-2 md:gap-8">
+        <div className="flex flex-wrap justify-center gap-2 md:gap-8 mb-4 md:mb-0">
           <ValueCard
             icon={<FaAward size={30} color="white" />}
             title="Mutu (Quality)"
