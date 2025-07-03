@@ -9,7 +9,7 @@ const HeroCertification = () => {
   const whatsAppNumber = contactInfo?.nomor_wa;
 
   return (
-    <div className="flex flex-col-reverse md:flex-row w-full px-4 sm:px-8 md:px-20 lg:px-24 xl:px-36 justify-center items-center h-screen md:h-[40vh] lg:h-[70vh] md:mt-20 gap-20">
+    <div className="flex flex-col-reverse md:flex-row w-full px-4 sm:px-8 md:px-20 lg:px-24 xl:px-36 justify-center items-center h-screen md:h-[40vh] lg:h-[70vh] mt-10 md:mt-20 gap-20">
       {/* Kolom Teks */}
       <div className="flex flex-col gap-8 md:gap-10 lg:gap-16 justify-start items-start w-full md:w-3/5 md:text-left">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-[#00662C] leading-tight">
