@@ -1,14 +1,59 @@
-// src/components/sections/certification/LegalInformation.jsx
-
-import React, { useContext } from "react";
+import React from "react";
 import { RiFileList3Line } from "react-icons/ri";
 import CardLegal from "@/components/common/CardLegal";
-import { DataContext } from "@/context/DataContext"; // Impor DataContext
+
+// ✅ Data dummy langsung
+const dummyLegalInformations = [
+  {
+    id: 2,
+    nama: "SK Ministry of Justice",
+    number: "AHU-0022283.ah.01.01/2018",
+  },
+  { id: 3, nama: "Tax Number (NPWP)", number: "84.702.452.8-447.000" },
+  { id: 4, nama: "Tax License (SKT)", number: "S-6667KT/WPJ.33/KP.0103/2018" },
+  {
+    id: 5,
+    nama: "Trade License (SIUP)",
+    number: "510/01600/PM/DPMPTSP.PPJU/OL",
+  },
+  { id: 6, nama: "Company Registration (TDP)", number: "1026.1770.2681/0L" },
+  {
+    id: 7,
+    nama: "Sertifikat Keahlian Dermaga",
+    number: "1077850 a/n Dono Murdiyanto",
+  },
+  {
+    id: 8,
+    nama: "Sertifikat Keahlian Mekanikal",
+    number: "1077837 a/n Pantyo Ardi KS",
+  },
+  {
+    id: 9,
+    nama: "Sertifikat Keahlian Mekanikal",
+    number: "1077836 a/n Hanif Rusidy",
+  },
+  { id: 10, nama: "Kartu tanda anggota AKSDAI", number: "00314.32.3275.0618" },
+  {
+    id: 11,
+    nama: "SBU Jasa Pelaksana Konstruksi (Instalasi Mekanikal & Elektrikal)",
+    number: "0624780",
+  },
+  {
+    id: 12,
+    nama: "SBU Jasa Pelaksana Konstruksi (Bangunan Sipil)",
+    number: "0624781",
+  },
+  {
+    id: 13,
+    nama: "Izin Usaha Jasa Konstruksi",
+    number: "1-110576-3275-00297/OL",
+  },
+  { id: 14, nama: "Sertifikat ISO 45001:2018", number: "ID825235C-1" },
+  { id: 15, nama: "Sertifikat ISO 9001:2015", number: "ID825235A" },
+  { id: 16, nama: "Date of Establishment", number: "Jakarta 17 April 2018" },
+];
 
 const LegalInformation = () => {
-  // Ambil data legal dari context
-  const { legalInformations, loading, error } = useContext(DataContext);
-
   return (
     <div className="w-full py-4 md:py-8 lg:py-0 flex flex-col px-4 sm:px-8 md:px-20 lg:24 xl:px-36 justify-center items-center gap-10">
       {/* Judul */}
@@ -20,22 +65,14 @@ const LegalInformation = () => {
       </div>
 
       {/* Grid Informasi Legal */}
-      <div className="w-full">
-        {loading ? (
-          <p className="col-span-full text-center text-gray-500">
-            Memuat informasi legal...
-          </p>
-        ) : error ? (
-          <p className="col-span-full text-center text-red-500">
-            Gagal memuat informasi.
-          </p>
-        ) : legalInformations.length === 0 ? (
+      <div className="w-full py-10">
+        {dummyLegalInformations.length === 0 ? (
           <p className="col-span-full text-center text-gray-500">
             Informasi legal tidak tersedia.
           </p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-x-10 gap-y-6 py-10">
-            {legalInformations.map((item) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-x-10 gap-y-6">
+            {dummyLegalInformations.map((item) => (
               <CardLegal
                 key={item.id}
                 title={item.nama}

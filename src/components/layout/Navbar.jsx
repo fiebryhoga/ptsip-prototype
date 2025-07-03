@@ -1,11 +1,20 @@
-// src/components/layout/Navbar.jsx
-
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { MdKeyboardArrowDown, MdMenu, MdClose } from "react-icons/md";
 import { BsFillTelephoneFill } from "react-icons/bs";
-import { DataContext } from "@/context/DataContext";
+
+// 🔁 Data dummy
+const dummyContact = {
+  gmail: "saranaintiperwira@gmail.com",
+  nomor: "+62 813 3208 2286",
+  nomor_wa: "6281332082286",
+  alamat: "Jl. Dakota No. 7A, Jati Asih, Kota Bekasi (17423)",
+  alamat_workshop:
+    "(Workshop) Jalan Raya Kedep, Tlajung Udik, Gunung Putri, Kabupaten Bogor (16962)",
+  linkedin: "https://id.linkedin.com/company/pt-sarana-inti-perwira",
+  youtube: "https://www.youtube.com/@saranaintiperwira7813",
+};
 
 export default function Navbar() {
   const router = useRouter();
@@ -13,9 +22,6 @@ export default function Navbar() {
 
   const [isTop, setIsTop] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const { contactInfo, loading } = useContext(DataContext);
-  const whatsAppNumber = contactInfo?.nomor_wa;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,14 +34,9 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isMenuOpen]);
 
-  // --- FUNGSI STYLING DIPERBAIKI DI SINI ---
   const getIsActive = (paths = []) => {
     return paths.some((path) => {
-      // Jika path adalah untuk "Home" (/), cek kesamaan persis
-      if (path === "/") {
-        return currentPath === path;
-      }
-      // Untuk path lain, cek apakah URL saat ini dimulai dengan path tersebut
+      if (path === "/") return currentPath === path;
       return currentPath.startsWith(path);
     });
   };
@@ -189,11 +190,7 @@ export default function Navbar() {
         {/* Tombol Contact Us */}
         <div className="hidden lg:block ml-4">
           <a
-            href={
-              !loading && whatsAppNumber
-                ? `https://wa.me/${whatsAppNumber}`
-                : "#"
-            }
+            href={`https://wa.me/${dummyContact.nomor_wa}`}
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center text-xs xl:text-sm py-3 lg:px-3 xl:px-6 gap-4 bg-[#00662C] text-white rounded-full hover:bg-transparent hover:text-[#00662C] transition-colors duration-300 border border-transparent hover:border-[#00662C]"
@@ -274,11 +271,7 @@ export default function Navbar() {
             Blogs
           </Link>
           <a
-            href={
-              !loading && whatsAppNumber
-                ? `https://wa.me/${whatsAppNumber}`
-                : "#"
-            }
+            href={`https://wa.me/${dummyContact.nomor_wa}`}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full text-center mt-4 py-3 px-6 bg-[#00662C] text-white rounded-full"

@@ -1,19 +1,87 @@
-// src/components/sections/service/FieldofBusinessSection.jsx
-
-import React, { useContext } from "react"; // Impor useContext, hapus useState dan useEffect
+import React from "react";
 import { RiBuilding3Fill } from "react-icons/ri";
-import CardService from "@/components/common/CardService";
 import { IoIosArrowRoundForward } from "react-icons/io";
-import { DataContext } from "@/context/DataContext"; // Impor DataContext
+import CardService from "@/components/common/CardService";
+
+// Data dummy langsung
+const services = [
+  {
+    id: 6,
+    nama_service: "Power Plant",
+    description:
+      "Full-service support for the construction, installation, and maintenance of power generation plants, including mechanical and lifting operations for turbines, boilers, and auxiliary systems.",
+    jenis: "Fields of Business",
+    gambar_url:
+      "/storage/services/kkbGXcE5WzqKeuYYGY7SYXsCAiKnMaodLsxItOPW.jpg",
+  },
+  {
+    id: 7,
+    nama_service: "Concrete Plant",
+    description:
+      "Comprehensive services for building and equipping concrete batching and production plants. We provide reliable structural and mechanical solutions to support high-output production facilities.",
+    jenis: "Fields of Business",
+    gambar_url:
+      "/storage/services/imbypiqJXjtH7J4pZiTwHr81px3eX28k8yqm8Va3.jpg",
+  },
+  {
+    id: 8,
+    nama_service: "Material Handling Plant",
+    description:
+      "Development of infrastructure and systems for efficient handling, movement, and processing of raw materials and goods, including conveyor systems, silos, and loading equipment.",
+    jenis: "Fields of Business",
+    gambar_url:
+      "/storage/services/VVTZehMl3FZVzxa4luCG1GMwrUn1MIUwrHpXakZJ.jpg",
+  },
+  {
+    id: 9,
+    nama_service: "Lifting Consultant",
+    description:
+      "Expert consultancy services for complex lifting operations, including planning, risk assessment, and method statements to ensure safe, efficient, and cost-effective lifting activities.",
+    jenis: "Fields of Business",
+    gambar_url:
+      "/storage/services/2tU755yJaD4DuQKaBF3axfoVPL4hbZKKcKRG5aqf.webp",
+  },
+  {
+    id: 10,
+    nama_service: "Infrastructures (Bridge, Toll Road, Jetty)",
+    description:
+      "Construction services for major infrastructure projects, such as bridges, toll roads, and marine jetties. We offer integrated solutions from foundation to superstructure, tailored to project requirements.",
+    jenis: "Fields of Business",
+    gambar_url:
+      "/storage/services/eSLPFFIeY0PcHwzFYgtbRJIgru4WGDwRFjavqgBJ.jpg",
+  },
+  {
+    id: 11,
+    nama_service: "Heavy Equipment Rental (Crane)",
+    description:
+      "Rental services for various types of cranes and lifting equipment to support construction, industrial maintenance, and special projects, including operator support and logistical planning.",
+    jenis: "Fields of Business",
+    gambar_url:
+      "/storage/services/c8tn5qCWSaHEMSqesf66UpummkbHg3vEsaABpPa3.jpg",
+  },
+  {
+    id: 12,
+    nama_service: "Warehouse Construction",
+    description:
+      "Design and construction of modern warehouse facilities optimized for storage, logistics, and distribution. We focus on functionality, scalability, and durability for long-term operations.",
+    jenis: "Fields of Business",
+    gambar_url:
+      "/storage/services/HDbzhiN1E08cYZOUc2aqHNWkjLsHwtD4G2VYMgkN.webp",
+  },
+  {
+    id: 13,
+    nama_service: "Piling (Land, Off-shore, On-shore)",
+    description:
+      "Foundation piling services for diverse terrains and environments, including soft soil and coastal areas. We use modern piling techniques to ensure strong, reliable foundations for any type of structure.",
+    jenis: "Fields of Business",
+    gambar_url:
+      "/storage/services/kka5BEsIoNp5NFSpciAmBLAIwG9vBdutrsMqOJZF.jpg",
+  },
+];
 
 const FieldofBusinessSection = () => {
-  // 1. Ambil data services dari DataContext
-  const { services, loading, error } = useContext(DataContext);
-
-  const BASE_URL = "http://127.0.0.1:8000";
   const categoryFilter = "Fields of Business";
 
-  // 2. Lakukan filter data setelah diambil dari context
   const filteredServices = services.filter(
     (service) => service.jenis === categoryFilter
   );
@@ -32,15 +100,7 @@ const FieldofBusinessSection = () => {
 
       {/* Grid untuk daftar layanan */}
       <div className="w-full">
-        {loading ? (
-          <p className="col-span-full text-center text-gray-600">
-            Loading services...
-          </p>
-        ) : error ? (
-          <p className="col-span-full text-center text-red-600">
-            Error: {error}
-          </p>
-        ) : filteredServices.length === 0 ? (
+        {filteredServices.length === 0 ? (
           <p className="col-span-full text-center text-gray-600">
             No services found for this category.
           </p>
@@ -49,7 +109,7 @@ const FieldofBusinessSection = () => {
             {filteredServices.map((service) => (
               <CardService
                 key={service.id}
-                imageUrl={`${BASE_URL}${service.gambar_url}`}
+                imageUrl={service.gambar_url}
                 title={service.nama_service}
                 description={service.description}
               />

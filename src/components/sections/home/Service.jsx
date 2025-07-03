@@ -1,21 +1,38 @@
-// src/components/sections/home/Service.jsx
-
-import React, { useContext } from "react"; // Impor useContext
+import React from "react";
 import { MdMiscellaneousServices } from "react-icons/md";
 import CardService from "@/components/common/CardService";
-import { DataContext } from "@/context/DataContext"; // Impor DataContext
+import { HiArrowRight } from "react-icons/hi";
 
-import { HiArrowRight } from "react-icons/hi"; // Import icon panah kanan (Tailwind-friendly)
-
+// Data dummy services (hanya 4 pertama)
+const dummyServices = [
+  {
+    id: 1,
+    nama_service: "Steel Structure and Precast Erection",
+    description:
+      "Installation and erection of steel frameworks and precast concrete elements for various industrial, commercial, and infrastructure projects. We ensure structural integrity, alignment accuracy, and compliance with safety standards throughout the process.",
+  },
+  {
+    id: 2,
+    nama_service: "Mechanical",
+    description:
+      "Mechanical services including fabrication, assembly, maintenance, and repair of machinery and industrial components. Our team delivers reliable solutions for both static and rotating equipment across multiple sectors.",
+  },
+  {
+    id: 3,
+    nama_service: "Installation",
+    description:
+      "Installation of machines, equipment, and heavy industrial systems with high precision. We manage end-to-end processes, from alignment and fitting to testing and commissioning, tailored to client specifications.",
+  },
+  {
+    id: 4,
+    nama_service: "Piping Work",
+    description:
+      "Engineering, fabrication, and installation of piping systems for fluid and gas transport. We handle various piping materials and standards, ensuring leak-proof and long-lasting systems for industrial applications.",
+  },
+];
 
 const Service = () => {
-  // Ambil data services, loading, dan error dari context
-  const { services, loading, error } = useContext(DataContext);
-
-  const BASE_URL = "http://127.0.0.1:8000";
-
-  // Ambil hanya 4 service pertama untuk ditampilkan di halaman utama
-  const mainServices = services.slice(0, 4);
+  const mainServices = dummyServices.slice(0, 4);
 
   return (
     <div className="flex flex-col w-full py-10 md:h-screen items-center px-4 sm:px-8 md:px-20 lg:px-36 gap-12">
@@ -34,28 +51,14 @@ const Service = () => {
         </p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 justify-center items-center gap-6 md:gap-10 w-full">
-        {loading ? (
-          <p className="col-span-full text-center text-gray-600">
-            Loading services...
-          </p>
-        ) : error ? (
-          <p className="col-span-full text-center text-red-600">
-            Error: {error}
-          </p>
-        ) : mainServices.length === 0 ? (
-          <p className="col-span-full text-center text-gray-600">
-            No main services found.
-          </p>
-        ) : (
-          mainServices.map((service) => (
-            <CardService
-              key={service.id}
-              imageUrl={`${BASE_URL}${service.gambar_url}`}
-              title={service.nama_service}
-              description={service.description}
-            />
-          ))
-        )}
+        {mainServices.map((service) => (
+          <CardService
+            key={service.id}
+            imageUrl="/assets/image/service/img5.jpg"
+            title={service.nama_service}
+            description={service.description}
+          />
+        ))}
       </div>
       <div className="flex flex-row justify-center items-center">
         <a

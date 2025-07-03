@@ -1,24 +1,74 @@
-// src/components/sections/home/Testimonials.jsx
-
-import React, { useRef, useEffect, useContext } from "react"; // Impor useContext
+import React, { useRef, useEffect } from "react";
 import { GoReport } from "react-icons/go";
 import CardTestimonials from "../../common/CardTestimonials";
-import { DataContext } from "@/context/DataContext"; // Impor DataContext
+
+// Dummy testimonial data
+const testimonials = [
+  {
+    id: 1,
+    nama_pelanggan: "Zahra Fitriani",
+    tanggal: "2022-12-24T00:00:00.000000Z",
+    pesan:
+      "Perusahaan ini adalah pilihan terbaik untuk setiap proyek konstruksi. Mereka memiliki pengalaman dan keahlian yang dibutuhkan untuk menyelesaikan setiap proyek dengan sukses. Sangat direkomendasikan!",
+    link: "https://indokontraktor.com/business/pt-sarana-inti-perwira-kota-bekasi",
+  },
+  {
+    id: 2,
+    nama_pelanggan: "Zainal Arifin",
+    tanggal: "2021-04-27T00:00:00.000000Z",
+    pesan:
+      "Perusahaan ini adalah pilihan terbaik untuk setiap proyek konstruksi. Mereka memiliki tim yang handal dan mampu memberikan solusi terbaik untuk setiap masalah yang muncul. Sangat direkomendasikan!",
+    link: "https://indokontraktor.com/business/pt-sarana-inti-perwira-kota-bekasi",
+  },
+  {
+    id: 3,
+    nama_pelanggan: "Lia Sutanto",
+    tanggal: "2023-04-21T00:00:00.000000Z",
+    pesan:
+      "Bangunan yang dibangun oleh perusahaan ini memiliki kualitas yang sangat tinggi. Mereka menggunakan bahan-bahan terbaik dan pekerja yang terampil. Sangat direkomendasikan!",
+    link: "https://indokontraktor.com/business/pt-sarana-inti-perwira-kota-bekasi",
+  },
+  {
+    id: 4,
+    nama_pelanggan: "Indra Saputra",
+    tanggal: "2021-10-18T00:00:00.000000Z",
+    pesan:
+      "Sangat senang dengan kerja sama yang baik dari perusahaan ini. Mereka sangat mendengarkan kebutuhan klien dan memberikan solusi terbaik. Saya sangat merekomendasikan mereka.",
+    link: "https://indokontraktor.com/business/pt-sarana-inti-perwira-kota-bekasi",
+  },
+  {
+    id: 5,
+    nama_pelanggan: "Budi Santoso",
+    tanggal: "2021-03-08T00:00:00.000000Z",
+    pesan:
+      "Pelayanan dari perusahaan ini sangat ramah dan membantu. Staffnya sangat responsif terhadap kebutuhan klien. Saya sangat puas dengan kerja mereka.",
+    link: "https://indokontraktor.com/business/pt-sarana-inti-perwira-kota-bekasi",
+  },
+  {
+    id: 6,
+    nama_pelanggan: "Ani Widarti",
+    tanggal: "2024-06-03T00:00:00.000000Z",
+    pesan:
+      "Saya sangat terkesan dengan kualitas bangunan yang diberikan oleh perusahaan ini. Semua pekerjaan dilakukan dengan teliti dan berkualitas tinggi. Sangat direkomendasikan!",
+    link: "https://indokontraktor.com/business/pt-sarana-inti-perwira-kota-bekasi",
+  },
+  {
+    id: 7,
+    nama_pelanggan: "Budi",
+    tanggal: "2023-02-10T00:00:00.000000Z",
+    pesan:
+      "Perusahaan ini sungguh luar biasa dalam pekerjaan mereka. Kualitasnya tidak diragukan lagi!",
+    link: "https://indokontraktor.com/business/pt-sarana-inti-perwira-kota-bekasi",
+  },
+];
 
 const Testimonials = () => {
   const trackRef = useRef(null);
   const isHovered = useRef(false);
   const position = useRef(0);
 
-  // 1. Ambil data testimoni dari context, bukan dari data dummy
-  const { testimonials, loading, error } = useContext(DataContext);
-
-  // 2. Hapus array `testimonialData` yang dummy
-  // const testimonialData = [ ... ]; // <-- HAPUS INI
-
   useEffect(() => {
-    // Jalankan animasi hanya jika data sudah ada
-    if (!trackRef.current || loading || testimonials.length === 0) return;
+    if (!trackRef.current || testimonials.length === 0) return;
 
     let animationFrameId;
     const animate = () => {
@@ -34,9 +84,8 @@ const Testimonials = () => {
 
     animationFrameId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationFrameId);
-  }, [testimonials, loading]); // Tambahkan dependensi
+  }, []);
 
-  // Helper function untuk mendapatkan inisial dari nama
   const getInitials = (name) => {
     if (!name) return "";
     const names = name.split(" ");
@@ -46,7 +95,6 @@ const Testimonials = () => {
     return name.charAt(0);
   };
 
-  // Helper function untuk format tanggal
   const formatDate = (dateString) => {
     if (!dateString) return "";
     const options = { year: "numeric", month: "2-digit", day: "2-digit" };
@@ -69,13 +117,7 @@ const Testimonials = () => {
         onMouseEnter={() => (isHovered.current = true)}
         onMouseLeave={() => (isHovered.current = false)}
       >
-        {loading ? (
-          <p className="text-center text-gray-500">Loading testimonials...</p>
-        ) : error ? (
-          <p className="text-center text-red-500">
-            Error loading testimonials.
-          </p>
-        ) : testimonials.length === 0 ? (
+        {testimonials.length === 0 ? (
           <p className="text-center text-gray-500">
             No testimonials available.
           </p>
@@ -85,7 +127,6 @@ const Testimonials = () => {
             className="flex gap-0 w-max h-max"
             style={{ willChange: "transform" }}
           >
-            {/* 3. Gandakan data dari API dan map untuk render CardTestimonials */}
             {[...testimonials, ...testimonials].map((item, index) => (
               <div
                 key={`${item.id}-${index}`}
@@ -96,7 +137,7 @@ const Testimonials = () => {
                   date={formatDate(item.tanggal)}
                   message={item.pesan}
                   initial={getInitials(item.nama_pelanggan)}
-                  stars={5} // Bintang bisa di-hardcode jika tidak ada di API
+                  stars={5}
                   link={item.link}
                 />
               </div>

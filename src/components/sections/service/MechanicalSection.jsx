@@ -1,19 +1,60 @@
-// src/components/sections/service/MechanicalSection.jsx
-
-import React, { useContext } from "react"; // Impor useContext, hapus useState dan useEffect
+import React from "react";
 import { RiBuilding3Fill } from "react-icons/ri";
-import CardService from "@/components/common/CardService";
 import { IoIosArrowRoundForward } from "react-icons/io";
-import { DataContext } from "@/context/DataContext"; // Impor DataContext
+import CardService from "@/components/common/CardService";
+
+// Data dummy langsung
+const services = [
+  {
+    id: 1,
+    nama_service: "Steel Structure and Precast Erection",
+    description:
+      "Installation and erection of steel frameworks and precast concrete elements for various industrial, commercial, and infrastructure projects. We ensure structural integrity, alignment accuracy, and compliance with safety standards throughout the process.",
+    jenis: "Mechanical, Construction, and Lifting",
+    gambar_url:
+      "/storage/services/qNBM6Md5U9Bx9gueOMZCVgcxFR6bbwgSYxi9w1r1.webp",
+  },
+  {
+    id: 2,
+    nama_service: "Mechanical",
+    description:
+      "Mechanical services including fabrication, assembly, maintenance, and repair of machinery and industrial components. Our team delivers reliable solutions for both static and rotating equipment across multiple sectors.",
+    jenis: "Mechanical, Construction, and Lifting",
+    gambar_url:
+      "/storage/services/HfmQF5pwGu8vDOR46JFe3VEzoNRZhSqaXW4DrdWK.jpg",
+  },
+  {
+    id: 3,
+    nama_service: "Installation",
+    description:
+      "Installation of machines, equipment, and heavy industrial systems with high precision. We manage end-to-end processes, from alignment and fitting to testing and commissioning, tailored to client specifications.",
+    jenis: "Mechanical, Construction, and Lifting",
+    gambar_url:
+      "/storage/services/otXE9L8mQ5x82wIUUp4BuelmNBPme174ifp1yutq.webp",
+  },
+  {
+    id: 4,
+    nama_service: "Piping Work",
+    description:
+      "Engineering, fabrication, and installation of piping systems for fluid and gas transport. We handle various piping materials and standards, ensuring leak-proof and long-lasting systems for industrial applications.",
+    jenis: "Mechanical, Construction, and Lifting",
+    gambar_url:
+      "/storage/services/YhC8sicYrtELTXya8hcXc7Lce5T30zFNiG5LIixR.jpg",
+  },
+  {
+    id: 5,
+    nama_service: "Lifting Work (On-shore & Off-shore)",
+    description:
+      "Specialized heavy lifting operations on land and offshore sites using advanced equipment and certified personnel. We emphasize safety, precision, and efficiency in moving large and sensitive structures or equipment.",
+    jenis: "Mechanical, Construction, and Lifting",
+    gambar_url:
+      "/storage/services/3HMlhPXDZpIhVOrXQWLue52W9Q9t7vXyXFyPlip7.png",
+  },
+];
 
 const MechanicalSection = () => {
-  // 1. Ambil data services dari DataContext
-  const { services, loading, error } = useContext(DataContext);
-
-  const BASE_URL = "http://127.0.0.1:8000";
   const categoryFilter = "Mechanical, Construction, and Lifting";
 
-  // 2. Lakukan filter data di sini, setelah diambil dari context
   const filteredServices = services.filter(
     (service) => service.jenis === categoryFilter
   );
@@ -32,15 +73,7 @@ const MechanicalSection = () => {
 
       {/* Grid untuk daftar layanan */}
       <div className="w-full">
-        {loading ? (
-          <p className="col-span-full text-center text-gray-600">
-            Loading services...
-          </p>
-        ) : error ? (
-          <p className="col-span-full text-center text-red-600">
-            Error: {error}
-          </p>
-        ) : filteredServices.length === 0 ? (
+        {filteredServices.length === 0 ? (
           <p className="col-span-full text-center text-gray-600">
             No services found for this category.
           </p>
@@ -49,7 +82,7 @@ const MechanicalSection = () => {
             {filteredServices.map((service) => (
               <CardService
                 key={service.id}
-                imageUrl={`${BASE_URL}${service.gambar_url}`}
+                imageUrl={service.gambar_url}
                 title={service.nama_service}
                 description={service.description}
               />
